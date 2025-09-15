@@ -209,3 +209,6 @@ __marimo__/
 # Database files
 *.sqlite3
 *.db
+
+# Credential files
+gmail_*.json

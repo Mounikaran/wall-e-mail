@@ -15,8 +15,8 @@ from logger import logger
 
 SCOPES = ["https://www.googleapis.com/auth/gmail.modify"]
 VERSION = "v1"
-GMAIL_CREDENTIALS_PATH = "<YOUR_CREDENTIALS_PATH>"
-GMAIL_TOKEN_PATH = "<YOUR_TOKEN_PATH>"
+GMAIL_CREDENTIALS_PATH = os.path.join(os.path.dirname(__file__), ".." , "gmail_credentials.json")
+GMAIL_TOKEN_PATH = os.path.join(os.path.dirname(__file__), ".." , "gmail_tokens.json")
 BATCH_SIZE = 100 # max batch size supported by Gmail API is 500
 
 class GmailService:
