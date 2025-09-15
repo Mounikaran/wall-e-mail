@@ -69,7 +69,7 @@ def test_rule_condition_string_contains(sample_email):
 
 def test_rule_condition_string_equals(sample_email):
     """Test string equals condition."""
-    condition = RuleCondition('sender', 'equals', 'sender@test.com')
+    condition = RuleCondition('from', 'equals', 'sender@test.com')
     assert condition.evaluate(sample_email) is True
     
     sample_email['sender'] = 'other@test.com'
@@ -88,7 +88,7 @@ def test_rule_all_predicate(sample_email):
     """Test rule with 'all' predicate."""
     conditions = [
         RuleCondition('subject', 'contains', 'test'),
-        RuleCondition('sender', 'contains', '@test.com')
+        RuleCondition('from', 'contains', '@test.com')
     ]
     rule = Rule('Test Rule', conditions, 'all', [{'type': 'mark_as_read'}])
     assert rule.evaluate(sample_email) is True
@@ -100,7 +100,7 @@ def test_rule_any_predicate(sample_email):
     """Test rule with 'any' predicate."""
     conditions = [
         RuleCondition('subject', 'contains', 'no match'),
-        RuleCondition('sender', 'contains', '@test.com')
+        RuleCondition('from', 'contains', '@test.com')
     ]
     rule = Rule('Test Rule', conditions, 'any', [{'type': 'mark_as_read'}])
     assert rule.evaluate(sample_email) is True

@@ -12,7 +12,6 @@ RULE_FILE_PATH = os.path.join(os.path.dirname(__file__), "config.json")
 
 EMAIL_FIELD_MAPPING = {
     "from": "sender",
-    "sender": "sender",
     "to": "recipient",
     "recipient": "recipient",
     "subject": "subject",

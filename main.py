@@ -26,6 +26,14 @@ def process_emails(email_count: int, days: int, only_unread: bool):
                 # Prepare email data for batch insertion
                 for email in batch:
                     email["labels"] = ",".join(email["labels"])
+                
+                # filter out emails that are already processed
+                message_ids = [email["message_id"] for email in batch]
+                processed_ids = email_db.get_processed_emails(message_ids)
+                batch = [email for email in batch if email["message_id"] not in processed_ids]
+                if not batch:
+                    logger.info("All emails in this batch are already processed. Skipping...")
+                    continue
 
                 # Store entire batch in database at once
                 email_db.add_emails_batch(batch)

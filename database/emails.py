@@ -105,9 +105,16 @@ class EmailDatabase:
         self.cursor.execute(query, params)
         return self.cursor.fetchall()
 
-    def get_processed_emails(self):
+    def get_processed_emails(self, message_ids=None):
         """Get list of all processed email IDs."""
-        self.cursor.execute("SELECT message_id FROM emails WHERE processed = 1")
+        query = "SELECT message_id FROM emails WHERE processed = 1"
+        if message_ids:
+            placeholders = ",".join("?" for _ in message_ids)
+            query += f" AND message_id IN ({placeholders})"
+            params = message_ids
+        else:
+            params = []
+        self.cursor.execute(query, params)
         return [row[0] for row in self.cursor.fetchall()]
 
     def close(self):
