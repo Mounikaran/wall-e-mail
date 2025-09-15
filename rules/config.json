@@ -1,0 +1,112 @@
+{
+    "rules": [
+        {
+            "name": "Important Emails",
+            "conditions": [
+                {
+                    "field": "from",
+                    "predicate": "contains",
+                    "value": "@happyfox.com"
+                }
+            ],
+            "predicate": "any",
+            "actions": [
+                {
+                    "type": "mark_as_read"
+                },
+                {
+                    "type": "move_message",
+                    "label": "Important"
+                }
+            ]
+        },
+        {
+            "name": "Old Newsletter Cleanup",
+            "conditions": [
+                {
+                    "field": "subject",
+                    "predicate": "contains",
+                    "value": "newsletter"
+                },
+                {
+                    "field": "received_date",
+                    "predicate": "greater_than",
+                    "value": "30 days"
+                }
+            ],
+            "predicate": "all",
+            "actions": [
+                {
+                    "type": "move_message",
+                    "label": "Newsletters"
+                }
+            ]
+        },
+        {
+            "name": "Move to HappyFox",
+            "conditions": [
+                {
+                    "field": "from",
+                    "predicate": "contains",
+                    "value": "happyfox"
+                },
+                {
+                    "field": "subject",
+                    "predicate": "contains",
+                    "value": "happyfox"
+                }
+            ],
+            "predicate": "any",
+            "actions": [
+                {
+                    "type": "move_message",
+                    "label": "HappyFox"
+                }
+            ]
+        },
+        {
+            "name": "Move to LinkedIn",
+            "conditions": [
+                {
+                    "field": "from",
+                    "predicate": "contains",
+                    "value": "linkedin"
+                },
+                {
+                    "field": "subject",
+                    "predicate": "contains",
+                    "value": "linkedin"
+                }
+            ],
+            "predicate": "any",
+            "actions": [
+                {
+                    "type": "move_message",
+                    "label": "LinkedIn"
+                } 
+            ]
+        },
+        {
+            "name": "Move to Jobs",
+            "conditions": [
+                {
+                    "field": "subject",
+                    "predicate": "contains",
+                    "value": "job"
+                },
+                {
+                    "field": "subject",
+                    "predicate": "contains",
+                    "value": "hiring"
+                }
+            ],
+            "predicate": "any",
+            "actions": [
+                {
+                    "type": "move_message",
+                    "label": "Jobs"
+                }
+            ]
+        }
+    ]
+}
