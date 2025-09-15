@@ -76,7 +76,7 @@ if __name__ == "__main__":
     arg_parser.add_argument(
         "--days",
         type=int,
-        default=7,
+        default=None,
         help="Number of days to look back for emails",
     )
     arg_parser.add_argument(
@@ -95,10 +95,14 @@ if __name__ == "__main__":
     # Validate arguments
     if email_count is not None and email_count < 1:
         raise ValueError("email_count must be at least 1")
-    if days < 1:
+    if days is not None and days < 1:
         raise ValueError("days must be at least 1")
     if not isinstance(only_unread, bool):
         raise ValueError("only_unread must be a boolean value")
+    
+    if days is None and email_count is None:
+        logger.info("No filters specified, setting default values: days=7")
+        days = 7
 
     # Process emails
     process_emails(email_count, days, only_unread)
