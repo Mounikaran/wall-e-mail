@@ -30,7 +30,8 @@ wall-e-mail/
 ├── logger.py              # Logging configuration
 ├── main.py               # Application entry point
 ├── requirements.txt      # Project dependencies
-└── setup.py             # Package setup configuration
+├── pytest.ini            # Pytest configuration
+└── README.md             # Project documentation 
 ```
 
 ## Installation
