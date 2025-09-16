@@ -2,7 +2,7 @@ import os
 import json
 import pytest
 from datetime import datetime, timedelta
-from rules.processor import RuleProcessor, RuleCondition, Rule
+from rules import RuleProcessor, RuleCondition, Rule
 
 @pytest.fixture
 def sample_email(request):

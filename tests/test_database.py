@@ -1,7 +1,7 @@
 import os
 import pytest
 from datetime import datetime, timedelta
-from database.emails import EmailDatabase
+from database import EmailDatabase
 
 @pytest.fixture
 def test_db_path(tmpdir):

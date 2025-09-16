@@ -30,6 +30,10 @@ def process_emails(email_count: int, days: int, only_unread: bool):
                 # filter out emails that are already processed
                 message_ids = [email["message_id"] for email in batch]
                 processed_ids = email_db.get_processed_emails(message_ids)
+                
+                if processed_ids:
+                    logger.info(f"Skipping {len(processed_ids)} already processed emails in this batch.")
+                
                 batch = [email for email in batch if email["message_id"] not in processed_ids]
                 if not batch:
                     logger.info("All emails in this batch are already processed. Skipping...")

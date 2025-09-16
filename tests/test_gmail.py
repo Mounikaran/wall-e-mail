@@ -1,7 +1,7 @@
 import pytest
 from datetime import datetime
 from unittest.mock import MagicMock, patch
-from services.gmail_service import GmailService
+from services import GmailService
 
 
 @pytest.fixture
