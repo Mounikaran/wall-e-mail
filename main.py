@@ -2,9 +2,9 @@ import argparse
 from tqdm import tqdm
 
 from logger import logger
-from services.gmail_service import GmailService
-from database.emails import EmailDatabase
-from rules.processor import RuleProcessor
+from database import EmailDatabase
+from rules import RuleProcessor
+from services import GmailService
 
 
 def process_emails(email_count: int, days: int, only_unread: bool):

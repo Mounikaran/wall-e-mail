@@ -6,14 +6,11 @@
                 {
                     "field": "from",
                     "predicate": "contains",
-                    "value": "@happyfox.com"
+                    "value": "happyfox"
                 }
             ],
-            "predicate": "any",
+            "predicate": "all",
             "actions": [
-                {
-                    "type": "mark_as_read"
-                },
                 {
                     "type": "move_message",
                     "label": "Important"
